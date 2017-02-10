@@ -70,6 +70,10 @@ minkowski_radius = 1.75;
  10. Dish Radius: radius of dish obj, the Sphere or Cylinder that cuts into the keycap
 */
 
+//Variables to access key_profiles values
+width_index = 0;
+height_index = 1;
+
 key_profiles = [
 
 	//DCS Profile
@@ -598,11 +602,11 @@ module key(){
 difference(){
     
     for(i = [0 : 10]) //Bottom row keys (on QWERTY Z-/)
-        translate([key_profiles[1][0] * i + 0.1, 0, 0])
+        translate([key_profiles[1][width_index] * i + 0.1, 0, 0])
             key();
     
     for (i = [0 : 11])
-        translate([key_profiles[2][0] * i + 0.1, 0, 0])
+        translate([key_profiles[2][width_index] * i + 0.1, key_profiles[1][height_index], 0])
             key();
     
     //key();
