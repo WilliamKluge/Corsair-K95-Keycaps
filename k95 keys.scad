@@ -598,15 +598,21 @@ module key(){
 	}
 }
 
+// COPY VECTOR
+module copy_mirror(vec=[0,1,0]) { 
+    children(); 
+    mirror(vec) children(); 
+}
+
 // ACTUAL OUTPUT
 difference(){
     
     for(i = [0 : 10]) //Bottom row keys (on QWERTY Z-/)
-        translate([key_profiles[1][width_index] * i + 0.1, 0, 0])
+        copy_mirror([key_profiles[1][width_index] * i + 0.1, 0, 0])
             key();
     
     for (i = [0 : 11])
-        translate([key_profiles[2][width_index] * i + 0.1, key_profiles[1][height_index], 0])
+        copy_mirror([key_profiles[2][width_index] * i + 0.1, key_profiles[1][height_index], 0])
             key();
     
     //key();
